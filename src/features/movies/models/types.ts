@@ -1,13 +1,7 @@
-export interface Movie {
-  title: string
-  year: string
-  imdbID: string
-  type: string
-  poster: string
-}
+export type Movie = Record<string, string>
 
 export interface MovieList {
-  search: Movie[]
+  Search: Movie[]
   totalResults: string
   response: string
 }
