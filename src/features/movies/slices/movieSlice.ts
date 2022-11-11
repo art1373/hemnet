@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 
-import type { Movie } from '../../services/types'
+import type { Movie } from '../models'
 
 export interface MovieState {
   movies: Movie[]

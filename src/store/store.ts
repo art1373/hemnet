@@ -1,16 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import { setupListeners } from '@reduxjs/toolkit/query'
 
-import movieReducer from './features/movies/movieSlice'
-import { movieApi } from './services/movies'
+import { rootMiddleware } from './middlewares'
+import { rootReducer } from './reducers'
 
 export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(movieApi.middleware),
-  reducer: {
-    movie: movieReducer,
-    [movieApi.reducerPath]: movieApi.reducer,
-  },
+    getDefaultMiddleware().concat(rootMiddleware),
+  reducer: { ...rootReducer },
 })
 
 export type RootState = ReturnType<typeof store.getState>
