@@ -1,4 +1,4 @@
-import { useGetMovieBySearchQuery } from '../../../services/movies'
+import { useGetMovieBySearchQuery } from '../services/movies'
 
 export const MovieList = () => {
   const { isLoading, data, error } = useGetMovieBySearchQuery({

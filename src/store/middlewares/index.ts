@@ -1,3 +1,3 @@
-import { movieApi } from '../../services/movies'
+import { movieApi } from '../../features/movies/services/movies'
 
 export const rootMiddleware = [movieApi.middleware]
