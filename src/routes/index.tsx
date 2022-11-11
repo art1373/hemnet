@@ -9,6 +9,6 @@ export const router = createBrowserRouter([
   },
   {
     element: <MovieDetail />,
-    path: '/movie/:id',
+    path: '/detail',
   },
 ])
