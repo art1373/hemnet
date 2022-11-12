@@ -5,8 +5,8 @@ import { useGetMovieBySearchQuery } from '../services/movies'
 export const MovieList = () => {
   const navigate = useNavigate()
   const { isLoading, data, error } = useGetMovieBySearchQuery({
-    page: '1',
-    query: 'sew',
+    page: 1,
+    query: 'Batman',
   })
   if (isLoading) return <div>loading...</div>
   if (error) return <div>Something went wrong!</div>

@@ -1,6 +1,6 @@
 export type Movie = Record<string, string>
 
-export interface MovieList {
+export type MovieList = {
   Search: Movie[]
   totalResults: string
   response: string
