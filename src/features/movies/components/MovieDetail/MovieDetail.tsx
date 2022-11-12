@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { useSearchParams } from 'react-router-dom'
 
-import { useGetMovieByIdQuery } from '../services/movies'
+import { useGetMovieByIdQuery } from '../../services/movies'
 
 export const MovieDetail = () => {
   const [searchParams] = useSearchParams()
@@ -12,7 +12,7 @@ export const MovieDetail = () => {
   if (isError) return <div>Something went wrong!</div>
 
   return (
-    <div>
+    <div className="bg-white">
       MovieDetail of {data?.Title ?? ''} the actors are {data?.Actors}
     </div>
   )

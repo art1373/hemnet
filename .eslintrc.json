@@ -75,6 +75,8 @@
     "import/named": "error",
     "import/default": "error",
     "import/export": "error",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
     "import/no-named-as-default": "warn",
     "import/no-duplicates": "error",
     "sort-keys-fix/sort-keys-fix": "warn",
