@@ -1,7 +1,6 @@
 import { ClipLoader } from 'react-spinners'
 
 import { useMovie } from '../../hooks'
-import { addFavorite, removeFavorite } from '../../slices/movieSlice'
 
 export const MovieDetail = () => {
   const {
