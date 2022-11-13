@@ -14,9 +14,9 @@ export const Pagination: React.FC<Props> = ({ page, setPage }) => {
           return setPage((prev) => prev - 1)
         }}
       >
-        previous page
+        Previous page
       </button>
-      <button onClick={() => setPage((prev) => prev + 1)}>next page</button>
+      <button onClick={() => setPage((prev) => prev + 1)}>Next page</button>
     </div>
   )
 }
