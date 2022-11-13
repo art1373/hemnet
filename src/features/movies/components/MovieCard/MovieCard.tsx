@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 interface Props {
   poster: string
   onClick: () => void

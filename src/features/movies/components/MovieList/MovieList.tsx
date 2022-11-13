@@ -1,25 +1,22 @@
-import { useCallback, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { ClipLoader } from 'react-spinners'
 
-import { Response } from '../../models'
-import { useGetMovieBySearchQuery } from '../../services/movies'
+import { Pagination } from '../../../../common/components'
+import { useMovieList } from '../../hooks'
+import type { Movie } from '../../models'
 import { MovieCard } from '../MovieCard/MovieCard'
 
 export const MovieList = () => {
-  const [query, setQuery] = useState('batman')
-  const [page, setPage] = useState(1)
-  const navigate = useNavigate()
-  const { isLoading, data, isError, isSuccess } = useGetMovieBySearchQuery(
-    {
-      page,
-      query,
-    },
-    { skip: query.length < 3 }
-  )
-
-  const onCardClick = useCallback((movie: any) => {
-    navigate({ pathname: '/detail', search: `?id=${movie.imdbID}` })
-  }, [])
+  const {
+    page,
+    query,
+    setQuery,
+    setPage,
+    isLoading,
+    isError,
+    isDataReady,
+    data,
+    onCardClick,
+  } = useMovieList()
 
   return (
     <section className="grid place-items-center">
@@ -30,12 +27,11 @@ export const MovieList = () => {
         onChange={(e) => setQuery(e.target.value)}
         className="mt-5 w-1/2	rounded-lg"
       />
-      {isLoading && <div>loading...</div>}
+      {isLoading && <ClipLoader color="#36d7b7" size={55} />}
       {isError && <div>Something went wrong!</div>}
       <div className=" lg:grid-cols-auto grid place-items-center gap-4 py-10  sm:grid-cols-3 md:grid-cols-6">
-        {isSuccess &&
-          data.Response === Response.TRUE &&
-          data?.Search.map((m) => (
+        {isDataReady &&
+          data?.Search.map((m: Movie) => (
             <MovieCard
               key={m.imdbID}
               poster={m.Poster}
@@ -43,18 +39,7 @@ export const MovieList = () => {
             />
           ))}
       </div>
-
-      <div className="fixed bottom-px	flex h-10 w-full justify-center gap-40 bg-white">
-        <button
-          onClick={() => {
-            if (page === 1) return
-            return setPage((prev) => prev - 1)
-          }}
-        >
-          previous page
-        </button>
-        <button onClick={() => setPage((prev) => prev + 1)}>next page</button>
-      </div>
+      {isDataReady && <Pagination page={page} setPage={setPage} />}
     </section>
   )
 }
