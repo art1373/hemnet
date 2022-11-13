@@ -4,5 +4,5 @@ export type GetMovieByIdRequest = {
 
 export type GetMovieByQueryRequest = {
   query: string
-  page: string
+  page: string | number
 }
